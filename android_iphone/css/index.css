@@ -1,0 +1,76 @@
+body{
+	overflow:hidden;
+	font-size:36px;
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+	background-image:url(../img/bodyback.jpg);
+	display:none;
+	}
+div{
+	position:relative;
+	}
+#page1{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background-image:url(../img/back2.gif);
+	-webkit-animation: back2move linear 20s infinite;
+	animation: back2move linear 20s infinite;
+	}
+#title{
+	height:40%;
+	margin-top:5%;
+	text-align:center;
+	display:none;
+	}
+#backimg{
+	position:absolute;
+	bottom:15%;
+	left:-80%;
+	width:80%;
+	height:auto;
+	}
+#p1btns{
+	position:absolute;
+	width:100%;
+	bottom:1%;
+	text-align:center;
+	display:none;
+	}
+button{
+	width:80%;
+	height:50px;
+	line-height:50px;
+	}
+#gameinfobox{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:100%;
+	background-image:url(../img/back3.jpg);
+	}
+#theinfo{
+	position:absolute;
+	width:90%;
+	left:5%;
+	}
+#returnbox{
+	position:absolute;
+	width:90%;
+	left:5%;
+	bottom:5%;
+	text-align:center;
+	}
+@keyframes back2move
+{
+	0%   {background-position:0 0;}
+	100% {background-position:300% -200%;}
+}
+@-webkit-keyframes back2move
+{
+	0%   {background-position:0 0;}
+	100% {background-position:300% -200%;}
+}

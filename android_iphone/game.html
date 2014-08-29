@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>神算子</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+	<div id="page2">
+		<!-- 头部计数部分 -->
+    	<div id="p2_1">
+        	<span id="p2_time" style="color:#00f">耗时:00:00</span>
+           	<span id="p2_cuo" style="color:#f00">错误:0</span>
+            <span id="p2_fen" style="color:#0f0">得分:0&nbsp;&nbsp;</span>
+        </div>
+		
+		<!-- 计时条 -->
+        <div id="p2_2">
+        	<div id="levelbox">
+				<div id="levelimg">
+					<span style="font-size:24px;margin-left:10px;">等级:</span>
+					<span class="glyphicon glyphicon-star" style="color:#ff0;font-size:24px;"></span>
+					<span class="glyphicon glyphicon-star" style="color:#ff0;font-size:24px;"></span>
+					<span class="glyphicon glyphicon-star" style="color:#ff0;font-size:24px;"></span>
+					<span class="glyphicon glyphicon-star" style="color:#ff0;font-size:24px;"></span>
+					<span class="glyphicon glyphicon-star" style="color:#ff0;font-size:24px;"></span>
+					<span class="glyphicon glyphicon-star" style="color:#ff0;font-size:24px;"></span>
+				</div>
+			</div>
+        	<div id="timebox">
+            	<div id="thetime"></div>
+            </div>
+        </div>
+		
+		<!-- 生成的题目 -->
+        <div id="p2_3"></div>
+		
+		<!-- 用户输入的答案显示 -->
+		<div id="usershuru"></div>
+		<div style="width:100%;text-align:center">
+			<img id="vximg" src="img/putong.png">
+		</div>
+		
+		<!-- 屏幕键盘 -->
+        <div id="p2_4">
+        <table id="thetable">
+        	<tr>
+            	<td style="width:33%"><div lang="7">7</div></td>
+                <td style="width:33%"><div lang="8">8</div></td>
+                <td style="width:33%"><div lang="9">9</div></td>
+            </tr>
+            <tr>
+                <td><div lang="4">4</div></td>
+                <td><div lang="5">5</div></td>
+                <td><div lang="6">6</div></td>
+            </tr>
+            <tr>
+                <td><div lang="1">1</div></td>
+                <td><div lang="2">2</div></td>
+                <td><div lang="3">3</div></td>
+            </tr>
+            <tr> 
+                <td><div id="clearzhi" lang="cl"><span class="glyphicon glyphicon-remove"></span></div></td>
+                <td><div lang="0">0</div></td>
+                <td><div id="surezhi" lang="ok"><span class="glyphicon glyphicon-ok"></span></div></td>
+            </tr>
+        </table>
+    	</div>
+    </div>
+    <div id="page3">
+		<!-- 称号 -->
+		<div id="p3_chenhao"></div>
+		
+		<!-- 用户成绩及数据库信息 -->
+		<div id="p3_info">
+			<div>
+            <span style="color:rgb(0,204,0)">得分:</span><span id="df">0</span>&nbsp;
+            <span style="color:rgb(204,0,0)">错误:</span><span id="cw">0</span>&nbsp;
+            <span style="color:rgb(0,0,204)">耗时:</span><span id="hs">00:00</span>
+            </div>
+			您本次排名：<span id="mingci" style="color:rgb(0,0,204)">获取中...</span><br/>
+			再多得1分将超越<span id="beyound" style="color:rgb(0,204,0)">获取中...</span>名玩家
+        </div>
+		
+		<!-- 返回按钮等 -->
+		<div id="p3_beyound">
+			<button class="btn  btn-primary" id="onemoretime" style="font-size:36px;line-height:36px">再来一次</button>
+			<button class="btn btn-default" id="returnindex" style="font-size:36px;line-height:36px">返回首页</button><br/>
+		</div>
+		
+		<!-- 称号对应的图片 -->
+		<div id="p3_imgbox"></div>
+	</div>
+    <div id="timeout">时间到!</div>
+	
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/thumbs.0.6.0.js"></script>
+	<script src="js/objects.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

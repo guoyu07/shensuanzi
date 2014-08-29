@@ -1,0 +1,157 @@
+body{
+	overflow:hidden;
+	font-size:36px;
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+	background-image:url(../img/bodyback.jpg);
+	}
+div{
+	position:relative;
+	}
+#page2{
+	position:absolute;
+	width:90%;
+	height:90%;
+	top:5%;
+	left:100%;
+	overflow:hidden;
+	background-image:url(../img/back3.jpg);
+	}
+#page3{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-image:url(../img/back3.jpg);
+	display:none;
+}
+#p2_1{
+	height:50px;
+	line-height:50px;
+	padding-left:10px;
+	padding-right:10px;
+	}
+#p2_fen,#p2_cuo{
+	float:right;
+	}
+#timebox{
+	width:500px;
+	height:20px;
+	left:50%;
+	margin-left:-250px;
+	background-color:rgb(214,214,214);
+	overflow:hidden;
+	border-radius:10px;
+	}
+#thetime{
+	width:500px;
+	height:20px;
+	top:0;
+	left:0;
+	background-color:rgb(0,235,0);
+	border-radius:10px;
+	}
+#p2_3{
+	font-size:48px;
+	text-align:center;
+	text-shadow:0 0 8px #888;
+	color:rgb(0,0,102);
+	}
+#usershuru{
+	font-size:40px;
+	text-align:center;
+	text-shadow:0 0 8px #888;
+	color:#3300FF;
+	height:50px;
+	line-height:40px;
+	border-bottom:dashed 1px #3366FF;
+	width:90%;
+	overflow:hidden;
+	left:5%;
+}
+#p2_4{
+	position:absolute;
+	bottom:1%;
+	width:100%;
+	text-align:center;
+	}
+#thetable{
+	width:90%;
+	height:100%;
+	margin-left:5%;
+}
+td{
+	padding:0 5px 5px 5px;
+	}
+#p2_4 div{
+	height:90%;
+	width:100%;
+	font-size:48px;
+	line-height:100px;
+	border-radius:50px;
+	background-color:rgb(255,255,255);
+	overflow:hidden;
+	}
+
+#p3_chenhao{
+	width:100%;
+	height:100px;
+	font-size:60px;
+	line-height:100px;
+	text-shadow:0 0 8px #0FF;
+	text-align:center;
+}
+#p3_info{
+	width:100%;
+	height:100px;
+	font-size:24px;
+	line-height:60px;
+	text-align:center;
+	font-size:36px;
+	border-top:dashed 1px #03f;
+}
+#p3_beyound{
+	position:absolute;
+	bottom:5%;
+	width:100%;
+	text-align:center;
+	z-index:99;
+}
+#p3_imgbox{
+	position:absolute;
+	bottom:5%;
+	width:100%;
+	height:300px;
+}
+#timeout{
+	position:fixed;
+	width:0;
+	height:0;
+	top:50%;
+	left:50%;
+	margin-top:0;
+	margin-left:0;
+	background-color:rgb(0,0,0);
+	border-radius:15px;
+	text-align:center;
+	line-height:150px;
+	display:none;
+	color:rgb(255,255,255);
+	}
+#vximg{
+	margin-left:30px;
+	width:40%;
+	height:auto;
+}
+button{
+	width:80%;
+	height:50px;
+	line-height:50px;
+	margin-top:5px;
+	}
+#levelbox{
+	width:105px;
+	overflow:hidden;
+}
+#levelimg{
+	width:500px;
+}
