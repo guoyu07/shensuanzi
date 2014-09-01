@@ -105,10 +105,8 @@ function btnclick(){
 		$("#usershuru").text(userzhi);
 	}
 	
-	$(this).css("background-color","#00f").stop().animate({"border-radius":"0"},100)
-		   .animate({"border-radius":"100px"},100,function(){
-		   		$(this).css("background-color","#fff");
-		   });
+	//按钮按下后的效果
+	$(this).css("background-color","#00f").stop().animate({"box-shadow":"0 0 5px #1877fa"},100);
 }
 
 /* 控制倒计时条 */
@@ -221,6 +219,7 @@ function levelStar(){
 /* 页面初始化 */
 function initPage(){
 	$("#p2_4 div").bind("touchstart",btnclick);												//绑定键盘按键事件
+	$("#p2_4 div").bind("touchend",btnclickEnd);												//绑定键盘按键事件
   	$("#returnindex").bind("touchstart",{page:"index.html"},returnpage);		//绑定返回首页
     $("#onemoretime").bind("touchstart",{page:"game.html"},returnpage);	//绑定再来一次
    
@@ -242,4 +241,10 @@ function playSound(id,time){
 /* 停止音效 */
 function stopSound(id){
 	uexAudio.stopFromSoundPool(id);
+}
+
+/* 屏幕键盘弹起后的效果 */
+function btnclickEnd(){
+	//按钮按下后的效果
+	$(this).css("background-color","#fff").stop().animate({"box-shadow":"0 0 0 #1877fa"},100);
 }
