@@ -2,19 +2,16 @@ var time1 = 0; 					//耗时
 var interval1;						//耗时循环计时器
 var interval2;						//倒计时循环计时器
 var userzhi = "";				//记录用户输入的内容,字符串型
+var soundopen = 1;			//声音状态 1开启，0关闭
 var player = new people();//玩家 包括分数、错误数、总耗时
 var timu = new question();//题目 包括题、题等级、题答案、生成题目方法
 
 /* 进入页面，游戏开始 */
 window.uexOnload = function(type){
-		var val = "sound";
-		var uri = window.location.search;
-		var re = new RegExp("" +val+ "=([^&?]*)", "ig");
-		var temp =  ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
-		alert(temp);
+		soundopen = parseInt(localStorage.getItem('soundopen'));
+		if(soundopen!=1 && soundopen!=0)soundopen=1;
 		
 		uexAudio.open("res://game.mp3");	//添加音乐跟音效
-　　	uexAudio.play(-1);
 		uexAudio.openSoundPool();
 		uexAudio.addSound(1,"res://v.wav");
 		uexAudio.addSound(2,"res://error.wav");
@@ -133,7 +130,7 @@ function time2Go(){
 function gameover(){
 	
 	//解除绑定键盘按键事件
-	 $("#p2_4 div").unbind("click");	
+	 $("#p2_4 div").unbind("touchestart");	
 	 
 	 //停止背景音乐
 	 uexAudio.stop();
@@ -186,6 +183,7 @@ function pageShow(){
 	
 /* 跳转页面动画（返回首页和再来一次） */
 function returnpage(e){
+		localStorage.setItem('soundopen',soundopen);	//将声音状态存储在本地，用于其他页面读取
 		$("#page3").animate({"width":"90%","height":"90%","left":"5%","top":"5%"},300)
 				   .animate({"left":"-100%"},300,function(){
 								window.location.href=e.data.page;							  
@@ -224,23 +222,25 @@ function levelStar(){
 /* 页面初始化 */
 function initPage(){
 	$("#p2_4 div").bind("touchstart",btnclick);												//绑定键盘按键事件
-	$("#p2_4 div").bind("touchend",btnclickEnd);												//绑定键盘按键事件
-  	$("#returnindex").bind("touchstart",{page:"index.html"},returnpage);		//绑定返回首页
-    $("#onemoretime").bind("touchstart",{page:"game.html"},returnpage);	//绑定再来一次
+	$("#p2_4 div").bind("touchend",btnclickEnd);											//绑定键盘按键弹起事件
+  	$("#returnindex").bind("touchstart",{page:"index.html?soundopen="+soundopen},returnpage);		//绑定返回首页
+    $("#onemoretime").bind("touchstart",{page:"game.html?soundopen="+soundopen},returnpage);	//绑定再来一次
    
     winheight = $(window).height();	//根据页面分辨率调整字体大小
     if (winheight < 960) {
 	   	$("#p2_4 div").css({"font-size":"30px","line-height":"50px"});
 		$("#p2_1,#p3_info").css("font-size","24px");
     }
+	$("#clearzhi").text(soundopen);
+	if (soundopen == 1)uexAudio.play(-1);	//播放背景音乐
 }
 
 /* 播放音效 */
 function playSound(id,time){
-	uexAudio.playFromSoundPool(id);
-	window.setTimeout(function(){
-		uexAudio.stopFromSoundPool(id);
-	},time);
+	if(soundopen==1){
+		uexAudio.playFromSoundPool(id);
+		window.setTimeout(function(){uexAudio.stopFromSoundPool(id);},time);
+	}
 }
 
 /* 停止音效 */
@@ -252,4 +252,11 @@ function stopSound(id){
 function btnclickEnd(){
 	//按钮按下后的效果
 	$(this).css("background-color","#fff").stop().animate({"box-shadow":"0 0 0 #1877fa"},100);
+}
+
+/* 获取页面参数的方法 */
+function getParameter(val){
+		var uri = window.location.search;
+		var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+		return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
 }

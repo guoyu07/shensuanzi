@@ -1,3 +1,5 @@
+var soundopen = 1;	//声音状态，1开启，0关闭
+
 //进入页面
 window.uexOnload = function(type){
 		 initPage();
@@ -10,7 +12,8 @@ window.uexOnload = function(type){
 function startGame(){
 	$("#page1").animate({"width":"90%","height":"90%","marginTop":"5%","marginLeft":"5%"},300)
 					   .animate({"left":"-105%"},300,function(){
-							window.location.href="game.html?sound=1";
+					   		localStorage.setItem('soundopen',soundopen);	//将声音状态存储在本地，用于其他页面读取
+							window.location.href="game.html";
 						});
 }
 
@@ -28,12 +31,32 @@ function returnMenu(){
 
 //页面初始化
 function initPage(){
+	soundopen = parseInt(localStorage.getItem('soundopen'));
+	if(soundopen!=1 && soundopen!=0)soundopen=1;
+	
+	//声音开关初始化及绑定开关事件
+	$("#soundcheck").iCheck({
+		 checkboxClass: 'icheckbox_square-green',
+		 radioClass: 'iradio_square-green',
+		 increaseArea: '20%'
+	});
+	
+	if(soundopen == 0)$('#soundcheck').iCheck('uncheck'); 
+	
+	$("#soundcheck").bind("ifChecked",function(){
+		soundopen = 1;
+		uexAudio.play(-1);
+	}).bind("ifUnchecked",function(){
+		soundopen = 0;
+		uexAudio.pause();
+	});
+	
 	//背景音乐和退出游戏事件
 	uexAudio.open("res://main.mp3");
-　　	uexAudio.play(-1);
-		  $("#exitgame").bind("touchend",function(){
-		  		uexWidgetOne.exit();
-		  });
+	if(soundopen==1)uexAudio.play(-1);
+    $("#exitgame").bind("touchend",function(){
+  		uexWidgetOne.exit();
+    });
 		  
 	//绑定按钮事件
 	$("#playgame").bind("touchstart",startGame);
@@ -45,4 +68,11 @@ function initPage(){
     if (winheight < 960) {
 		$("#theinfo").css("font-size","24px");
     }
+}
+
+/* 获取页面参数的方法 */
+function getParameter(val){
+		var uri = window.location.search;
+		var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+		return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
 }

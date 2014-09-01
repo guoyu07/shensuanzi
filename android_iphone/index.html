@@ -7,7 +7,7 @@
 <title>神算子</title>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-switch.min.css">
+<link rel="stylesheet" href="iCheck-master/skins/square/green.css">
 <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -21,10 +21,11 @@
         
 		<!-- 按钮 -->
 		<div id="p1btns">
-			<div class="switch switch-large">
-			    <input type="checkbox" checked />
+			<div style="width:80%;left:10%;text-align:right">
+				<input id="soundcheck" type="checkbox" checked/>
+				<label for="soundcheck" style="font-size:30px;color:#333">声音</label>
 			</div>
-        	<button class="btn  btn-primary" id="playgame" style="font-size:36px;line-height:36px">开始游戏</button><br/>
+        	<button class="btn  btn-primary" id="playgame" style="font-size:36px;line-height:36px">开始游戏</button>
             <button class="btn  btn-default" id="gameinfo" style="font-size:36px;line-height:36px">游戏简介</button>
 			<button class="btn btn-default" id="exitgame" style="font-size:36px;line-height:36px">退出游戏</button>
         </div>
@@ -43,7 +44,7 @@
 
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-switch.min.js"></script>
+	<script src="iCheck-master/icheck.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
 	<script src="js/thumbs.0.6.0.js"></script>
     <script src="js/index.js"></script>
