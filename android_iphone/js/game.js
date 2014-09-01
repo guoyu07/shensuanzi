@@ -7,7 +7,12 @@ var timu = new question();//题目 包括题、题等级、题答案、生成题
 
 /* 进入页面，游戏开始 */
 window.uexOnload = function(type){
-	
+		var val = "sound";
+		var uri = window.location.search;
+		var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+		var temp =  ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
+		alert(temp);
+		
 		uexAudio.open("res://game.mp3");	//添加音乐跟音效
 　　	uexAudio.play(-1);
 		uexAudio.openSoundPool();

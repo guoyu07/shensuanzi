@@ -1,10 +1,12 @@
 body{
+	width:100%;
 	overflow:hidden;
 	font-size:36px;
 	margin:0 0 0 0;
 	padding:0 0 0 0;
 	background-image:url(../img/bodyback.jpg);
 	display:none;
+	overflow:hidden;
 	}
 div{
 	position:relative;

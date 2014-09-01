@@ -10,7 +10,7 @@ window.uexOnload = function(type){
 function startGame(){
 	$("#page1").animate({"width":"90%","height":"90%","marginTop":"5%","marginLeft":"5%"},300)
 					   .animate({"left":"-105%"},300,function(){
-							window.location.href="game.html";
+							window.location.href="game.html?sound=1";
 						});
 }
 
