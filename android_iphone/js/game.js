@@ -231,7 +231,7 @@ function initPage(){
 	   	$("#p2_4 div").css({"font-size":"30px","line-height":"50px"});
 		$("#p2_1,#p3_info").css("font-size","24px");
     }
-	$("#clearzhi").text(soundopen);
+
 	if (soundopen == 1)uexAudio.play(-1);	//播放背景音乐
 }
 
