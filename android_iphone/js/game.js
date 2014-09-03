@@ -112,7 +112,7 @@ function btnclick(){
 	}
 	
 	//按钮按下后的效果
-	$(this).css({"border-bottom":"solid 0 #ccc","box-shadow":"0 0 15px rgba(58,112,249,0.8)"}).stop()
+	$(this).css({"box-shadow":"0 0 15px rgba(58,112,249,0.8)"}).stop()
 	.animate({},100);
 }
 
@@ -195,10 +195,14 @@ function pageShow(){
  */
 function pauseGame(){
 	$("body").stopTime();
+	uexAudio.pause();
+	$("#gamePause").fadeIn(300);
 }
 
+/* 恢复游戏 */
 function recoveryGame(){
-	
+	$("#gamePause").fadeOut(200);
+	if(soundopen==1)uexAudio.play(-1);
 	$("body").everyTime('1s',timers.timer1,function(){
 		time1start();
 	})
@@ -248,13 +252,30 @@ function levelStar(){
 function initPage(){
 	$("#p2_4 div").bind("touchstart",btnclick);												//绑定键盘按键事件
 	$("#p2_4 div").bind("touchend",btnclickEnd);											//绑定键盘按键弹起事件
-  	$("#returnindex").bind("touchstart",{page:"index.html?soundopen="+soundopen},returnpage);		//绑定返回首页
+  	$("#returnindex,#returnindex2").bind("touchstart",{page:"index.html?soundopen="+soundopen},returnpage);		//绑定返回首页
     $("#onemoretime").bind("touchstart",{page:"game.html?soundopen="+soundopen},returnpage);	//绑定再来一次
+    $("#gamegoon").bind("touchstart",recoveryGame);								//绑定继续游戏按钮事件
    
-    winheight = $(window).height();	//根据页面分辨率调整字体大小
+   //声音开关初始化及绑定开关事件
+	$("#soundcheck").iCheck({
+		 checkboxClass: 'icheckbox_square-green',
+		 radioClass: 'iradio_square-green',
+		 increaseArea: '20%'
+	});
+	if(soundopen == 0)$('#soundcheck').iCheck('uncheck'); 
+	$("#soundcheck").bind("ifChecked",function(){
+		soundopen = 1;
+		uexAudio.play(-1);
+	}).bind("ifUnchecked",function(){
+		soundopen = 0;
+		uexAudio.pause();
+	});
+	
+	//根据页面分辨率调整字体大小
+    winheight = $(window).height();
     if (winheight < 960) {
 	   	$("#p2_4 div").css({"font-size":"30px","line-height":"50px"});
-		$("#p2_1,#p3_info").css("font-size","24px");
+		$("#p2_1,#p3_info").css("font-size","20px");
     }
 
 	if (soundopen == 1)uexAudio.play(-1);	//播放背景音乐
@@ -276,7 +297,7 @@ function stopSound(id){
 /* 屏幕键盘弹起后的效果 */
 function btnclickEnd(){
 	//按钮弹起后的效果
-	$(this).css({"border-bottom":"solid 5px #ccc","box-shadow":"0 0 0 rgba(58,112,249,0.8)"}).stop()
+	$(this).css({"box-shadow":"0 0 0 rgba(58,112,249,0.8)"}).stop()
 	.animate({},100);
 }
 

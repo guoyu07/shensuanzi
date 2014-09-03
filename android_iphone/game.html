@@ -7,6 +7,7 @@
 <title>神算子</title>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="iCheck-master/skins/square/green.css">
 <link rel="stylesheet" href="css/game.css">
 </head>
 
@@ -16,9 +17,8 @@
     	<div id="p2_1">
         	<span id="p2_time" style="color:#00f">耗时:00:00</span>
            	<span id="p2_cuo" style="color:#f00">错误:0</span>
-            <!--<span id="p2_fen" style="color:#0f0">得分:0&nbsp;&nbsp;</span>-->
-			<a href="javascript:pauseGame();">暂</a>
-			<a href="javascript:recoveryGame();">恢</a>
+            <span id="p2_fen" style="color:#0f0">得分:0&nbsp;&nbsp;</span>
+			<a href="javascript:pauseGame();">暂停</a>
         </div>
 		
 		<!-- 计时条 -->
@@ -100,10 +100,22 @@
 	</div>
     <div id="timeout">时间到!</div>
 	
+	<div id="gamePause">
+		<div style="color:#ddd;font-size:36px;top:5%;">暂停中...</div>
+		<div id="gamePause_box">
+			<div style="width:80%;left:10%;text-align:right">
+					<input id="soundcheck" type="checkbox" checked/>
+					<label for="soundcheck" style="font-size:30px;color:#fff">声音</label>
+			</div>
+			<button class="btn  btn-primary" id="gamegoon" style="font-size:36px;line-height:36px;">继续游戏</button>
+			<button class="btn  btn-default" id="returnindex2" style="font-size:36px;line-height:36px;">返回首页</button>
+		</div>
+	</div>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.timers.js"></script>
 	<script src="js/thumbs.0.6.0.js"></script>
+	<script src="iCheck-master/icheck.min.js"></script>
 	<script src="js/objects.js"></script>
     <script src="js/game.js"></script>
 </body>

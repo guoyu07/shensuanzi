@@ -88,7 +88,7 @@ td{
 	font-size:48px;
 	line-height:100px;
 	border-radius:50px;
-	border-bottom:solid 5px #ccc;
+	/*border-bottom:solid 5px #ccc;*/
 	box-shadow:0 0 0 rgba(93,39,247,0.8);
 	background-color:rgb(255,255,255);
 	overflow:hidden;
@@ -156,4 +156,20 @@ button{
 }
 #levelimg{
 	width:500px;
+}
+#gamePause{
+	position:fixed;
+	text-align:center;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:99;
+	display:none;
+	background-color:rgba(0,0,0,0.9);
+}
+#gamePause_box{
+	position:absolute;
+	width:100%;
+	bottom:5%;
 }
