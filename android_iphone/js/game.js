@@ -1,6 +1,8 @@
 var time1 = 0; 					//耗时
-var interval1;						//耗时循环计时器
-var interval2;						//倒计时循环计时器
+var timers = {                   // 循环计时器命名
+	timer1:"time",
+	timer2:"djstime"
+};
 var userzhi = "";				//记录用户输入的内容,字符串型
 var soundopen = 1;			//声音状态 1开启，0关闭
 var player = new people();//玩家 包括分数、错误数、总耗时
@@ -45,8 +47,10 @@ function chuTiShow(ti){
 	$("#p2_3").text(ti+"=?");
 	time2 = 15;															//刷新倒计时
 	$("#thetime").width($("#timebox").width()).css("background","#00FFFF");
-	window.clearInterval(interval2);
-	interval2 = window.setInterval("time2Go()",200);	//启动倒计时
+	$("body").stopTime(timers.timer2);
+	$('body').everyTime(200,timers.timer2, function(){
+		time2Go();
+	})
 	levelStar();
 	}
 	
@@ -118,8 +122,8 @@ function time2Go(){
 	$thetime.width($thetime.width()-$("#timebox").width()/60);//6.5
 	if($thetime.width()<10)						//超时
 	{
-			window.clearInterval(interval1);	//停止耗时
-			window.clearInterval(interval2);	//停止倒计时
+		    // 停止所有计时器
+			$("body").stopTime();
 			gameover();
 			
 	}
@@ -175,12 +179,33 @@ function gameover(){
 	
 /* 进入页面动画 */
 function pageShow(){
+		// 计时采用jqueryTimers
+		$("body").everyTime('1s',timers.timer1,function(){
+			time1start();
+		})
+		
 		$("#page2").fadeIn(300,function(){
 				var ti = timu.chuTi();													//进入页面时就产生一道题
-				chuTiShow(ti);															//将题显示到页面上，并记录正确答案												
-				interval1 = window.setInterval("time1start()",1000);	//开始计时											   
+				chuTiShow(ti);															//将题显示到页面上，并记录正确答案
 		 });
 	}
+	
+/**
+ * 暂停游戏
+ */
+function pauseGame(){
+	$("body").stopTime();
+}
+
+function recoveryGame(){
+	
+	$("body").everyTime('1s',timers.timer1,function(){
+		time1start();
+	})
+	$('body').everyTime(200,timers.timer2, function(){
+		time2Go();
+	})
+}
 	
 /* 跳转页面动画（返回首页和再来一次） */
 function returnpage(e){
