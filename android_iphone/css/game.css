@@ -10,12 +10,13 @@ div{
 	}
 #page2{
 	position:absolute;
-	width:90%;
-	height:90%;
-	top:5%;
-	left:100%;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
 	overflow:hidden;
 	background-image:url(../img/back3.jpg);
+	display:none;
 	}
 #page3{
 	position:absolute;
@@ -34,21 +35,20 @@ div{
 	float:right;
 	}
 #timebox{
-	width:500px;
-	height:20px;
-	left:50%;
-	margin-left:-250px;
+	width:90%;
+	height:12px;
+	left:5%;
 	background-color:rgb(214,214,214);
 	overflow:hidden;
-	border-radius:10px;
+	border-radius:6px;
 	}
 #thetime{
 	width:500px;
-	height:20px;
+	height:12px;
 	top:0;
 	left:0;
-	background-color:rgb(0,235,0);
-	border-radius:10px;
+	background-color:rgb(0,0,245);
+	border-radius:6px;
 	}
 #p2_3{
 	font-size:48px;
@@ -88,6 +88,8 @@ td{
 	font-size:48px;
 	line-height:100px;
 	border-radius:50px;
+	border-bottom:solid 5px #ccc;
+	box-shadow:0 0 0 rgba(93,39,247,0.8);
 	background-color:rgb(255,255,255);
 	overflow:hidden;
 	}

@@ -10,8 +10,7 @@ window.uexOnload = function(type){
 
 //点击开始游戏
 function startGame(){
-	$("#page1").animate({"width":"90%","height":"90%","marginTop":"5%","marginLeft":"5%"},300)
-					   .animate({"left":"-105%"},300,function(){
+	$("#page1").fadeOut(300,function(){
 					   		localStorage.setItem('soundopen',soundopen);	//将声音状态存储在本地，用于其他页面读取
 							window.location.href="game.html";
 						});

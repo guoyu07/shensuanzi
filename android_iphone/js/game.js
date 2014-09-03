@@ -44,7 +44,7 @@ function chuTiShow(ti){
 	timu.jieguo = eval(ti);
 	$("#p2_3").text(ti+"=?");
 	time2 = 15;															//刷新倒计时
-	$("#thetime").width(500).css("background","#00FFFF");
+	$("#thetime").width($("#timebox").width()).css("background","#00FFFF");
 	window.clearInterval(interval2);
 	interval2 = window.setInterval("time2Go()",200);	//启动倒计时
 	levelStar();
@@ -83,12 +83,12 @@ function btnclick(){
 			playSound(2,120);			//播放音效
 			//回答错误的处理
 			player.cuowu++;
-			if (player.cuowu <= 20) {	//如果错误数<=20，则继续下一题
+			if (player.cuowu <= 10) {	//如果错误数<=10，则继续下一题
 				$("#vximg").attr("src", "img/x.png?random=" + Math.random());
 				$("#p2_3").text("oh,no.");
 				window.setTimeout("putong()", 500);
 			}
-			else{									//如果错误数>20，则游戏结束
+			else{									//如果错误数>10，则游戏结束
 				window.clearInterval(interval1);	//停止耗时
 				window.clearInterval(interval2);	//停止倒计时
 				$("#timeout").text("你错太多了");
@@ -108,13 +108,14 @@ function btnclick(){
 	}
 	
 	//按钮按下后的效果
-	$(this).css("background-color","#00f").stop().animate({"box-shadow":"0 0 5px #1877fa"},100);
+	$(this).css({"border-bottom":"solid 0 #ccc","box-shadow":"0 0 15px rgba(58,112,249,0.8)"}).stop()
+	.animate({},100);
 }
 
 /* 控制倒计时条 */
 function time2Go(){
 	var $thetime = $("#thetime");
-	$thetime.width($thetime.width()-6.5);//6.5
+	$thetime.width($thetime.width()-$("#timebox").width()/60);//6.5
 	if($thetime.width()<10)						//超时
 	{
 			window.clearInterval(interval1);	//停止耗时
@@ -174,18 +175,17 @@ function gameover(){
 	
 /* 进入页面动画 */
 function pageShow(){
-		$("#page2").animate({"left":"5%"},300).animate({"left":"0","top":"0","width":"100%","height":"100%"},300,function(){
-				interval1 = window.setInterval("time1start()",1000);	//开始计时
+		$("#page2").fadeIn(300,function(){
 				var ti = timu.chuTi();													//进入页面时就产生一道题
-				chuTiShow(ti);															//将题显示到页面上，并记录正确答案																								   
+				chuTiShow(ti);															//将题显示到页面上，并记录正确答案												
+				interval1 = window.setInterval("time1start()",1000);	//开始计时											   
 		 });
 	}
 	
 /* 跳转页面动画（返回首页和再来一次） */
 function returnpage(e){
 		localStorage.setItem('soundopen',soundopen);	//将声音状态存储在本地，用于其他页面读取
-		$("#page3").animate({"width":"90%","height":"90%","left":"5%","top":"5%"},300)
-				   .animate({"left":"-100%"},300,function(){
+		$("#page3").fadeOut(300,function(){
 								window.location.href=e.data.page;							  
 							});
 	}
@@ -250,8 +250,9 @@ function stopSound(id){
 
 /* 屏幕键盘弹起后的效果 */
 function btnclickEnd(){
-	//按钮按下后的效果
-	$(this).css("background-color","#fff").stop().animate({"box-shadow":"0 0 0 #1877fa"},100);
+	//按钮弹起后的效果
+	$(this).css({"border-bottom":"solid 5px #ccc","box-shadow":"0 0 0 rgba(58,112,249,0.8)"}).stop()
+	.animate({},100);
 }
 
 /* 获取页面参数的方法 */
